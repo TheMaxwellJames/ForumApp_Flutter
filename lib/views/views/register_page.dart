@@ -2,28 +2,31 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, duplicate_ignore, unused_local_variable, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:forumapp/views/views/register_page.dart';
 import 'package:forumapp/views/widgets/input_widget.dart';
-import 'views/widgets/input_widget.dart';
 import 'package:get/get.dart';
 
+import '../login_page.dart';
+//import 'views/widgets/input_widget.dart';
 
-// import 'package:google_fonts/google_fonts.dart';
 
 
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
 
 
 final TextEditingController _emailController = TextEditingController();
 final TextEditingController _passwordController = TextEditingController();
+final TextEditingController _nameController = TextEditingController();
+final TextEditingController _usernameController = TextEditingController();
 
 
   @override
@@ -37,8 +40,22 @@ final TextEditingController _passwordController = TextEditingController();
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  [
-              Text('Enter Login Details', style: TextStyle(fontSize: 30,)),
+              Text('Register Page', style: TextStyle(fontSize: 30,)),
              const  SizedBox(height: 30,
+               ),
+               InputWidget(
+                hintText: 'Name',
+                obscureText: false,
+                  controller: _nameController,
+              ),
+              const  SizedBox(height: 30,
+               ),
+               InputWidget(
+                hintText: 'Username',
+                obscureText: false,
+                  controller: _usernameController,
+              ),
+              const  SizedBox(height: 30,
                ),
                InputWidget(
                 hintText: 'Email',
@@ -66,14 +83,16 @@ final TextEditingController _passwordController = TextEditingController();
                       ),
                   ),
                   onPressed: () {}, 
-                  child: const Text('Login'),
+                  child: const Text('Register'),
                 ),
-                const SizedBox(height: 20,),
-                TextButton(
+                const SizedBox(
+                  height: 20,
+                ),
+                 TextButton(
                   onPressed: () {
-               Get.to(() => const RegisterPage());
+               Get.to(() => const LoginPage());
                   },
-                child: Text('Register', style: TextStyle(
+                child: Text('Login', style: TextStyle(
                   fontSize: 30,
                  color: Colors.black,
                  ),
